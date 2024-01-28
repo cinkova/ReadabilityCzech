@@ -1,0 +1,37 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# ReadabilityCzech
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+ReadabilityCzech computes readability of texts written in Czech with language-specific adaptations of the classic readability formulas [*Flesch Reading Ease* and *Flesch-Kincaid Grade Level*](https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests). 
+
+## Installation
+
+You can install the development version of ReadabilityCzech like so:
+
+``` r
+library(tidyverse)
+library(magrittr)
+library(udpipe)
+library(ReadabilityCzech)
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
