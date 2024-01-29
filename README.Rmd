@@ -18,20 +18,202 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-ReadabilityCzech computes readability of texts written in Czech with language-specific adaptations of the classic readability formulas [*Flesch Reading Ease* and *Flesch-Kincaid Grade Level*](https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests). 
+ReadabilityCzech computes readability of texts written in Czech with language-specific adaptations of the classic readability formulas [*Flesch Reading Ease* and *Flesch-Kincaid Grade Level*](https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests).
+
+Both readability formulas use counts of syllables, word counts per sentence, and sentence counts. The syllable counts per word are computed by a dedicated script in this package. The word and sentence counts are obtained from an automatic text analysis implemented by the [`udpipe` package by J. Wijffels](https://cran.r-project.org/web/packages/udpipe/vignettes/udpipe-universe.html).  
+
 
 ## Installation
 
 You can install the development version of ReadabilityCzech like so:
 
-``` r
-library(tidyverse)
-library(magrittr)
-library(udpipe)
-library(ReadabilityCzech)
+```{r}
+devtools::install_github("cinkova/ReadabilityCzech")
 ```
 
 ## Example
+### Preprocessing
+You want to gauge the readability of a Czech text. This is how you prepare it:
 
-This is a basic example which shows you how to solve a common problem:
+- Make sure that it is UTF-8 encoded and in the plain text format. 
+- Use an NLP tool - a syntactic parser. It will
+    - tokenize the text (ie. recognize word and sentence boundaries)
+    - tell you the part of speech and lemma of each word
+    - display syntactic relations between words (not needed in this use case). 
 
+There are many NLP tools, but you need one that works with [Universal Dependencies](universaldependencies.org). 
+For Czech we recommend [UDPipe](https://lindat.mff.cuni.cz/services/udpipe/info.php) with the language model `czech-pdt-udXXXX`. 
+
+You can use UDPipe through:
+
+- [Web GUI](https://lindat.mff.cuni.cz/services/udpipe/)
+    
+- [REST API](https://lindat.mff.cuni.cz/services/udpipe/api-reference.php) 
+    
+- R package [`udpipe`](https://cran.r-project.org/web/packages/udpipe/vignettes/udpipe-annotation.html)
+
+
+Note that the `udpipe` R package uses [UDPipe1](https://ufal.mff.cuni.cz/udpipe/1), whereas the GUI and API point to the current version of [UDPipe2](https://ufal.mff.cuni.cz/udpipe/2). However, for the readability use case this hardly makes any difference. 
+
+The output from the parser will be in the so-called [CONLL-U](https://universaldependencies.org/format.html) format, which looks like this:
+
+```
+# generator = UDPipe 2, https://lindat.mff.cuni.cz/services/udpipe
+# udpipe_model = english-ewt-ud-2.12-230717
+# udpipe_model_licence = CC BY-NC-SA
+# newdoc
+# newpar
+# sent_id = 1
+# text = It is ok.
+1	It	it	PRON	PRP	Case=Nom|Gender=Neut|Number=Sing|Person=3|PronType=Prs	3	nsubj	_	TokenRange=0:2
+2	is	be	AUX	VBZ	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	3	cop	_	TokenRange=3:5
+3	ok	ok	ADJ	JJ	Degree=Pos	0	root	_	SpaceAfter=No|TokenRange=6:8
+4	.	.	PUNCT	.	_	3	punct	_	TokenRange=8:9
+```
+
+```{r warning=FALSE, message=FALSE}
+library(ReadabilityCzech)
+library(udpipe)
+library(tidyverse)
+library(magrittr)
+
+```
+
+We are going to compute the readability of a passage from a freely available e-book in Czech:
+
+```{r}
+plaintext <- read_lines("https://www.gutenberg.org/cache/epub/29648/pg29648.txt") %>% 
+  stringr::str_flatten(collapse = " ") %>% str_sub(start = 3008, end = 7508)
+```
+
+Here are the first 505 characters of `plaintext`. 
+```{r}
+plaintext %>% str_sub(start = 1, end = 505)
+```
+
+### Three ways to obtain a `.conllu` file from your plain text
+
+This is one of the possible ways to obtain the conll-u file using the REST-API. If you choose this way, you will have to mount specialized libraries for API handling. 
+
+```{r}
+library(RCurl)
+library(jsonlite)
+
+proresult <- RCurl::postForm(uri = "https://lindat.mff.cuni.cz/services/udpipe/api/process", 
+                             .params = c(data = plaintext, tokenizer = TRUE, 
+                                         tagger = TRUE, parser = TRUE, 
+                                         model = "czech-pdt-ud-2.12-230717") ) %>%
+  fromJSON() 
+result <- proresult$result
+write_lines(result, file = "data-raw/result_plaintext.conllu")
+
+```
+
+Another way would be with the `udpipe` library. Here is a cookbook. For more details, refer to the `udpipe` package documentation. 
+
+First download the appropriate language model (naming just the language picks the largest if several are available).
+To see the list of models, you have to consult the [UDPipe1 documentation](https://ufal.mff.cuni.cz/udpipe/1). 
+
+```{r message=FALSE,eval=FALSE}
+czech_model <- udpipe::udpipe_download_model(language = "czech", model_dir = "data-raw")
+```
+Then load (i.e. activate) the model. 
+
+```{r }
+czech <- udpipe::udpipe_load_model(czech_model$file_model)
+```
+
+Eventually, run the parser locally on your computer, using the model you have downloaded and then loaded.
+
+```{r}
+plaintext_udpipeR <- udpipe::udpipe_annotate(object = czech, x = plaintext, 
+                                        tokenizer = "tokenizer", 
+                                        tagger = "default", 
+                                        parser = "default")
+```
+
+You could save some time with setting `parser` to `"none"`, when you process large data. 
+
+```{r}
+result_udpipeR <- plaintext_udpipeR$conllu
+write_lines(result_udpipeR, "data-raw/result_plaintext_udpipeR.conllu")
+```
+
+Since each of these methods uses a different version of the language model and tool, the files are not identical (but both do a good job). 
+
+If you do not mind fiddling with the UDPipe web GUI, upload a plain text file or copy-paste a plain text in the GUI, select the Czech model, hit the Process Input button and then the Save Output File button. 
+
+Whichever way you have used, at this point you should have a file with the suffix `.conllu`. 
+
+
+### Converting the `.conllu` file to the conll-u data frame
+For this this task, you need the `udpipe` package.  
+
+```{r}
+plaintext_df <- udpipe_read_conllu(file = "data-raw/result_plaintext.conllu")
+glimpse(plaintext_df)
+```
+
+
+## Computing readability 
+
+### Flesch Reading Ease
+
+```{r}
+compute_FRE(plaintext_df)
+```
+
+### Flesch-Kincaid Grade Level
+
+```{r}
+compute_FleschKincaidGradeLevel(plaintext_df)
+```
+
+## Other text statistics
+Both readability scores are based on sentence, word, and syllable counts. If you are interested in these statistics, you can use functions that were built to support `compute_FRE()` and`compute_FleschKincaidGradeLevel()`.
+
+```{r}
+count_sentences_in_conllu(plaintext_df)
+```
+
+```{r}
+count_average_sentence_length(plaintext_df)
+```
+
+```{r}
+count_words_in_conllu(plaintext_df)
+```
+
+```{r}
+count_average_token_length_in_syllables(plaintext_df)
+```
+
+```{r}
+create_syllablecount_per_token_df(plaintext_df) %>% slice_head(n = 10)
+```
+
+
+## Acknowledgments
+Supported by the Czech Science Foundation grant 19-19191S: Linguistic Factors of Readability in Czech Administrative and Educational Texts. The work described herein has also been using data/tools/services provided by the LINDAT/CLARIAH-CZ
+Research Infrastructure (https://lindat.cz) (Project No. LM2018101) and Czech National Corpus (Project No. LM2023044), both supported by the Ministry of Education, Youth and Sports of the Czech Republic. 
+
+If you use this package, please cite this paper:
+
+```
+@inproceedings{biblio:BeCiAdaptationClassic2021,
+	address = {Cham, Switzerland},
+	series = {Lecture Notes in Computer Science},
+	title = {{Adaptation of Classic Readability Metrics to Czech}},
+	volume = {12848},
+	copyright = {All rights reserved},
+	isbn = {978-3-030-83526-2},
+	booktitle = {{Lecture Notes in Artificial Intelligence, 24th International Conference on Text, Speech and Dialogue}},
+	publisher = {Springer},
+	author = {Bendová, Klára and Cinková, Silvie},
+	editor = {Ekštein, Kamil and Pártl, František and Konopík, Miroslav},
+	year = {2021},
+	note = {tex.organization: University of West Bohemia},
+	pages = {159--171},
+}
+
+```
