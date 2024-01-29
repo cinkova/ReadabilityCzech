@@ -16,6 +16,9 @@ knitr::opts_chunk$set(
 # ReadabilityCzech
 
 <!-- badges: start -->
+[![Codecov test coverage](https://codecov.io/gh/cinkova/ReadabilityCzech/branch/master/graph/badge.svg)](https://app.codecov.io/gh/cinkova/ReadabilityCzech?branch=master)
+[![CRAN status](https://www.r-pkg.org/badges/version/ReadabilityCzech)](https://CRAN.R-project.org/package=ReadabilityCzech)
+[![R-CMD-check](https://github.com/cinkova/ReadabilityCzech/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/cinkova/ReadabilityCzech/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ReadabilityCzech computes readability of texts written in Czech with language-specific adaptations of the classic readability formulas [*Flesch Reading Ease* and *Flesch-Kincaid Grade Level*](https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests).
@@ -114,7 +117,7 @@ Another way would be with the `udpipe` library. Here is a cookbook. For more det
 First download the appropriate language model (naming just the language picks the largest if several are available).
 To see the list of models, you have to consult the [UDPipe1 documentation](https://ufal.mff.cuni.cz/udpipe/1). 
 
-```{r message=FALSE,eval=FALSE}
+```{r message=FALSE}
 czech_model <- udpipe::udpipe_download_model(language = "czech", model_dir = "data-raw")
 ```
 Then load (i.e. activate) the model. 

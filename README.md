@@ -4,6 +4,12 @@
 # ReadabilityCzech
 
 <!-- badges: start -->
+
+[![Codecov test
+coverage](https://codecov.io/gh/cinkova/ReadabilityCzech/branch/master/graph/badge.svg)](https://app.codecov.io/gh/cinkova/ReadabilityCzech?branch=master)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/ReadabilityCzech)](https://CRAN.R-project.org/package=ReadabilityCzech)
+[![R-CMD-check](https://github.com/cinkova/ReadabilityCzech/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/cinkova/ReadabilityCzech/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ReadabilityCzech computes readability of texts written in Czech with
@@ -28,7 +34,6 @@ devtools::install_github("cinkova/ReadabilityCzech")
 #> rlang   (1.1.1  -> 1.1.3) [CRAN]
 #> glue    (1.6.2  -> 1.7.0) [CRAN]
 #> cli     (3.6.1  -> 3.6.2) [CRAN]
-#> vctrs   (0.6.3  -> 0.6.5) [CRAN]
 #> utf8    (1.2.3  -> 1.2.4) [CRAN]
 #> fansi   (1.0.4  -> 1.0.6) [CRAN]
 #> stringi (1.7.12 -> 1.8.3) [CRAN]
@@ -36,104 +41,32 @@ devtools::install_github("cinkova/ReadabilityCzech")
 #> dplyr   (1.1.2  -> 1.1.4) [CRAN]
 #> tidyr   (1.3.0  -> 1.3.1) [CRAN]
 #> readr   (2.1.4  -> 2.1.5) [CRAN]
-#> Installing 11 packages: rlang, glue, cli, vctrs, utf8, fansi, stringi, purrr, dplyr, tidyr, readr
-#> Installing packages into 'C:/Users/cinkova/AppData/Local/R/win-library/4.3'
+#> Installing 10 packages: rlang, glue, cli, utf8, fansi, stringi, purrr, dplyr, tidyr, readr
+#> Installing packages into 'C:/Users/cinkova/AppData/Local/Temp/Rtmp6HHbnt/temp_libpatha6416021f91'
 #> (as 'lib' is unspecified)
 #> package 'rlang' successfully unpacked and MD5 sums checked
-#> Warning: cannot remove prior installation of package 'rlang'
-#> Warning in file.copy(savedcopy, lib, recursive = TRUE): problem copying
-#> C:\Users\cinkova\AppData\Local\R\win-library\4.3\00LOCK\rlang\libs\x64\rlang.dll
-#> to C:\Users\cinkova\AppData\Local\R\win-library\4.3\rlang\libs\x64\rlang.dll:
-#> Permission denied
-#> Warning: restored 'rlang'
 #> package 'glue' successfully unpacked and MD5 sums checked
-#> Warning: cannot remove prior installation of package 'glue'
-#> Warning in file.copy(savedcopy, lib, recursive = TRUE): problem copying
-#> C:\Users\cinkova\AppData\Local\R\win-library\4.3\00LOCK\glue\libs\x64\glue.dll
-#> to C:\Users\cinkova\AppData\Local\R\win-library\4.3\glue\libs\x64\glue.dll:
-#> Permission denied
-#> Warning: restored 'glue'
 #> package 'cli' successfully unpacked and MD5 sums checked
-#> Warning: cannot remove prior installation of package 'cli'
-#> Warning in file.copy(savedcopy, lib, recursive = TRUE): problem copying
-#> C:\Users\cinkova\AppData\Local\R\win-library\4.3\00LOCK\cli\libs\x64\cli.dll to
-#> C:\Users\cinkova\AppData\Local\R\win-library\4.3\cli\libs\x64\cli.dll:
-#> Permission denied
-#> Warning: restored 'cli'
-#> package 'vctrs' successfully unpacked and MD5 sums checked
-#> Warning: cannot remove prior installation of package 'vctrs'
-#> Warning in file.copy(savedcopy, lib, recursive = TRUE): problem copying
-#> C:\Users\cinkova\AppData\Local\R\win-library\4.3\00LOCK\vctrs\libs\x64\vctrs.dll
-#> to C:\Users\cinkova\AppData\Local\R\win-library\4.3\vctrs\libs\x64\vctrs.dll:
-#> Permission denied
-#> Warning: restored 'vctrs'
 #> package 'utf8' successfully unpacked and MD5 sums checked
-#> Warning: cannot remove prior installation of package 'utf8'
-#> Warning in file.copy(savedcopy, lib, recursive = TRUE): problem copying
-#> C:\Users\cinkova\AppData\Local\R\win-library\4.3\00LOCK\utf8\libs\x64\utf8.dll
-#> to C:\Users\cinkova\AppData\Local\R\win-library\4.3\utf8\libs\x64\utf8.dll:
-#> Permission denied
-#> Warning: restored 'utf8'
 #> package 'fansi' successfully unpacked and MD5 sums checked
-#> Warning: cannot remove prior installation of package 'fansi'
-#> Warning in file.copy(savedcopy, lib, recursive = TRUE): problem copying
-#> C:\Users\cinkova\AppData\Local\R\win-library\4.3\00LOCK\fansi\libs\x64\fansi.dll
-#> to C:\Users\cinkova\AppData\Local\R\win-library\4.3\fansi\libs\x64\fansi.dll:
-#> Permission denied
-#> Warning: restored 'fansi'
 #> package 'stringi' successfully unpacked and MD5 sums checked
-#> Warning: cannot remove prior installation of package 'stringi'
-#> Warning in file.copy(savedcopy, lib, recursive = TRUE): problem copying
-#> C:\Users\cinkova\AppData\Local\R\win-library\4.3\00LOCK\stringi\libs\icudt69l.dat
-#> to C:\Users\cinkova\AppData\Local\R\win-library\4.3\stringi\libs\icudt69l.dat:
-#> Invalid argument
-#> Warning in file.copy(savedcopy, lib, recursive = TRUE): problem copying
-#> C:\Users\cinkova\AppData\Local\R\win-library\4.3\00LOCK\stringi\libs\x64\stringi.dll
-#> to
-#> C:\Users\cinkova\AppData\Local\R\win-library\4.3\stringi\libs\x64\stringi.dll:
-#> Permission denied
-#> Warning: restored 'stringi'
 #> package 'purrr' successfully unpacked and MD5 sums checked
-#> Warning: cannot remove prior installation of package 'purrr'
-#> Warning in file.copy(savedcopy, lib, recursive = TRUE): problem copying
-#> C:\Users\cinkova\AppData\Local\R\win-library\4.3\00LOCK\purrr\libs\x64\purrr.dll
-#> to C:\Users\cinkova\AppData\Local\R\win-library\4.3\purrr\libs\x64\purrr.dll:
-#> Permission denied
-#> Warning: restored 'purrr'
 #> package 'dplyr' successfully unpacked and MD5 sums checked
-#> Warning: cannot remove prior installation of package 'dplyr'
-#> Warning in file.copy(savedcopy, lib, recursive = TRUE): problem copying
-#> C:\Users\cinkova\AppData\Local\R\win-library\4.3\00LOCK\dplyr\libs\x64\dplyr.dll
-#> to C:\Users\cinkova\AppData\Local\R\win-library\4.3\dplyr\libs\x64\dplyr.dll:
-#> Permission denied
-#> Warning: restored 'dplyr'
 #> package 'tidyr' successfully unpacked and MD5 sums checked
-#> Warning: cannot remove prior installation of package 'tidyr'
-#> Warning in file.copy(savedcopy, lib, recursive = TRUE): problem copying
-#> C:\Users\cinkova\AppData\Local\R\win-library\4.3\00LOCK\tidyr\libs\x64\tidyr.dll
-#> to C:\Users\cinkova\AppData\Local\R\win-library\4.3\tidyr\libs\x64\tidyr.dll:
-#> Permission denied
-#> Warning: restored 'tidyr'
 #> package 'readr' successfully unpacked and MD5 sums checked
-#> Warning: cannot remove prior installation of package 'readr'
-#> Warning in file.copy(savedcopy, lib, recursive = TRUE): problem copying
-#> C:\Users\cinkova\AppData\Local\R\win-library\4.3\00LOCK\readr\libs\x64\readr.dll
-#> to C:\Users\cinkova\AppData\Local\R\win-library\4.3\readr\libs\x64\readr.dll:
-#> Permission denied
-#> Warning: restored 'readr'
 #> 
 #> The downloaded binary packages are in
-#>  C:\Users\cinkova\AppData\Local\Temp\RtmpM9coXy\downloaded_packages
+#>  C:\Users\cinkova\AppData\Local\Temp\Rtmp0wwzAV\downloaded_packages
 #> ── R CMD build ─────────────────────────────────────────────────────────────────
-#>          checking for file 'C:\Users\cinkova\AppData\Local\Temp\RtmpM9coXy\remotes5ed453ae5564\cinkova-ReadabilityCzech-92860b8/DESCRIPTION' ...  ✔  checking for file 'C:\Users\cinkova\AppData\Local\Temp\RtmpM9coXy\remotes5ed453ae5564\cinkova-ReadabilityCzech-92860b8/DESCRIPTION'
+#>          checking for file 'C:\Users\cinkova\AppData\Local\Temp\Rtmp0wwzAV\remotes858542c4ffa\cinkova-ReadabilityCzech-fbf445e/DESCRIPTION' ...  ✔  checking for file 'C:\Users\cinkova\AppData\Local\Temp\Rtmp0wwzAV\remotes858542c4ffa\cinkova-ReadabilityCzech-fbf445e/DESCRIPTION'
 #>       ─  preparing 'ReadabilityCzech':
 #>    checking DESCRIPTION meta-information ...     checking DESCRIPTION meta-information ...   ✔  checking DESCRIPTION meta-information
 #>       ─  checking for LF line-endings in source and make files and shell scripts
-#>   ─  checking for empty or unneeded directories
+#>       ─  checking for empty or unneeded directories
 #>       ─  building 'ReadabilityCzech_0.1.1.tar.gz'
 #>      
 #> 
-#> Installing package into 'C:/Users/cinkova/AppData/Local/R/win-library/4.3'
+#> Installing package into 'C:/Users/cinkova/AppData/Local/Temp/Rtmp6HHbnt/temp_libpatha6416021f91'
 #> (as 'lib' is unspecified)
 ```
 
@@ -163,8 +96,7 @@ You can use UDPipe through:
 - [REST
   API](https://lindat.mff.cuni.cz/services/udpipe/api-reference.php)
 
-- R package
-  [`udpipe`](https://cran.r-project.org/web/packages/udpipe/vignettes/udpipe-annotation.html)
+- R package [`udpipe`](https://CRAN.R-project.org/package=udpipe)
 
 Note that the `udpipe` R package uses
 [UDPipe1](https://ufal.mff.cuni.cz/udpipe/1), whereas the GUI and API
@@ -189,14 +121,10 @@ looks like this:
     4   .   .   PUNCT   .   _   3   punct   _   TokenRange=8:9
 
 ``` r
-library(udpipe)
-library(dplyr)
-library(stringr)
-library(tidyr)
-library(readr)
-library(stringi)
-library(magrittr)
 library(ReadabilityCzech)
+library(udpipe)
+library(tidyverse)
+library(magrittr)
 ```
 
 We are going to compute the readability of a passage from a freely
@@ -228,6 +156,11 @@ library(RCurl)
 #> 
 #>     complete
 library(jsonlite)
+#> 
+#> Attaching package: 'jsonlite'
+#> The following object is masked from 'package:purrr':
+#> 
+#>     flatten
 
 proresult <- RCurl::postForm(uri = "https://lindat.mff.cuni.cz/services/udpipe/api/process", 
                              .params = c(data = plaintext, tokenizer = TRUE, 
