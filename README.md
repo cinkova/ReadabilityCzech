@@ -21,8 +21,7 @@ Both readability formulas use counts of syllables, word counts per
 sentence, and sentence counts. The syllable counts per word are computed
 by a dedicated script in this package. The word and sentence counts are
 obtained from an automatic text analysis implemented by the [`udpipe`
-package by J.
-Wijffels](https://cran.r-project.org/web/packages/udpipe/vignettes/udpipe-universe.html).
+package by J. Wijffels](https://CRAN.R-project.org/package=udpipe).
 
 ## Installation
 
@@ -42,7 +41,7 @@ devtools::install_github("cinkova/ReadabilityCzech")
 #> tidyr   (1.3.0  -> 1.3.1) [CRAN]
 #> readr   (2.1.4  -> 2.1.5) [CRAN]
 #> Installing 10 packages: rlang, glue, cli, utf8, fansi, stringi, purrr, dplyr, tidyr, readr
-#> Installing packages into 'C:/Users/cinkova/AppData/Local/Temp/Rtmp6HHbnt/temp_libpatha6416021f91'
+#> Installing packages into 'C:/Users/cinkova/AppData/Local/Temp/Rtmp6HHbnt/temp_libpatha6479f475b0'
 #> (as 'lib' is unspecified)
 #> package 'rlang' successfully unpacked and MD5 sums checked
 #> package 'glue' successfully unpacked and MD5 sums checked
@@ -56,9 +55,9 @@ devtools::install_github("cinkova/ReadabilityCzech")
 #> package 'readr' successfully unpacked and MD5 sums checked
 #> 
 #> The downloaded binary packages are in
-#>  C:\Users\cinkova\AppData\Local\Temp\Rtmp0wwzAV\downloaded_packages
+#>  C:\Users\cinkova\AppData\Local\Temp\Rtmpe2ET4F\downloaded_packages
 #> ── R CMD build ─────────────────────────────────────────────────────────────────
-#>          checking for file 'C:\Users\cinkova\AppData\Local\Temp\Rtmp0wwzAV\remotes858542c4ffa\cinkova-ReadabilityCzech-fbf445e/DESCRIPTION' ...  ✔  checking for file 'C:\Users\cinkova\AppData\Local\Temp\Rtmp0wwzAV\remotes858542c4ffa\cinkova-ReadabilityCzech-fbf445e/DESCRIPTION'
+#>          checking for file 'C:\Users\cinkova\AppData\Local\Temp\Rtmpe2ET4F\remotes3c483a21aca\cinkova-ReadabilityCzech-3b7d3ce/DESCRIPTION' ...  ✔  checking for file 'C:\Users\cinkova\AppData\Local\Temp\Rtmpe2ET4F\remotes3c483a21aca\cinkova-ReadabilityCzech-3b7d3ce/DESCRIPTION'
 #>       ─  preparing 'ReadabilityCzech':
 #>    checking DESCRIPTION meta-information ...     checking DESCRIPTION meta-information ...   ✔  checking DESCRIPTION meta-information
 #>       ─  checking for LF line-endings in source and make files and shell scripts
@@ -66,7 +65,7 @@ devtools::install_github("cinkova/ReadabilityCzech")
 #>       ─  building 'ReadabilityCzech_0.1.1.tar.gz'
 #>      
 #> 
-#> Installing package into 'C:/Users/cinkova/AppData/Local/Temp/Rtmp6HHbnt/temp_libpatha6416021f91'
+#> Installing package into 'C:/Users/cinkova/AppData/Local/Temp/Rtmp6HHbnt/temp_libpatha6479f475b0'
 #> (as 'lib' is unspecified)
 ```
 
