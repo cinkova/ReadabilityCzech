@@ -50,7 +50,7 @@ You can use UDPipe through:
     
 - [REST API](https://lindat.mff.cuni.cz/services/udpipe/api-reference.php) 
     
-- R package [`udpipe`](https://cran.r-project.org/web/packages/udpipe/vignettes/udpipe-annotation.html)
+- R package [`udpipe`](https://CRAN.R-project.org/package=udpipe)
 
 
 Note that the `udpipe` R package uses [UDPipe1](https://ufal.mff.cuni.cz/udpipe/1), whereas the GUI and API point to the current version of [UDPipe2](https://ufal.mff.cuni.cz/udpipe/2). However, for the readability use case this hardly makes any difference. 
