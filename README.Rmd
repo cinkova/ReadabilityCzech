@@ -44,7 +44,7 @@ You want to gauge the readability of a Czech text. This is how you prepare it:
     - tell you the part of speech and lemma of each word
     - display syntactic relations between words (not needed in this use case). 
 
-There are many NLP tools, but you need one that works with [Universal Dependencies](universaldependencies.org). 
+There are many NLP tools, but you need one that works with [Universal Dependencies](https:://universaldependencies.org). 
 For Czech we recommend [UDPipe](https://lindat.mff.cuni.cz/services/udpipe/info.php) with the language model `czech-pdt-udXXXX`. 
 
 You can use UDPipe through:
