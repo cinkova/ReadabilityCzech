@@ -41,7 +41,7 @@ devtools::install_github("cinkova/ReadabilityCzech")
 #> tidyr   (1.3.0  -> 1.3.1) [CRAN]
 #> readr   (2.1.4  -> 2.1.5) [CRAN]
 #> Installing 10 packages: rlang, glue, cli, utf8, fansi, stringi, purrr, dplyr, tidyr, readr
-#> Installing packages into 'C:/Users/cinkova/AppData/Local/Temp/Rtmp6HHbnt/temp_libpatha64257544ad'
+#> Installing packages into 'C:/Users/cinkova/AppData/Local/Temp/Rtmp6HHbnt/temp_libpatha645740703d'
 #> (as 'lib' is unspecified)
 #> package 'rlang' successfully unpacked and MD5 sums checked
 #> package 'glue' successfully unpacked and MD5 sums checked
@@ -55,9 +55,9 @@ devtools::install_github("cinkova/ReadabilityCzech")
 #> package 'readr' successfully unpacked and MD5 sums checked
 #> 
 #> The downloaded binary packages are in
-#>  C:\Users\cinkova\AppData\Local\Temp\RtmpwxJpxA\downloaded_packages
+#>  C:\Users\cinkova\AppData\Local\Temp\RtmpgXt11l\downloaded_packages
 #> ── R CMD build ─────────────────────────────────────────────────────────────────
-#>          checking for file 'C:\Users\cinkova\AppData\Local\Temp\RtmpwxJpxA\remotes286c3d2b2e4a\cinkova-ReadabilityCzech-3c3da82/DESCRIPTION' ...  ✔  checking for file 'C:\Users\cinkova\AppData\Local\Temp\RtmpwxJpxA\remotes286c3d2b2e4a\cinkova-ReadabilityCzech-3c3da82/DESCRIPTION'
+#>          checking for file 'C:\Users\cinkova\AppData\Local\Temp\RtmpgXt11l\remotes14b8568f6b72\cinkova-ReadabilityCzech-53196ae/DESCRIPTION' ...  ✔  checking for file 'C:\Users\cinkova\AppData\Local\Temp\RtmpgXt11l\remotes14b8568f6b72\cinkova-ReadabilityCzech-53196ae/DESCRIPTION'
 #>       ─  preparing 'ReadabilityCzech':
 #>    checking DESCRIPTION meta-information ...     checking DESCRIPTION meta-information ...   ✔  checking DESCRIPTION meta-information
 #>       ─  checking for LF line-endings in source and make files and shell scripts
@@ -65,7 +65,7 @@ devtools::install_github("cinkova/ReadabilityCzech")
 #>       ─  building 'ReadabilityCzech_0.1.1.tar.gz'
 #>      
 #> 
-#> Installing package into 'C:/Users/cinkova/AppData/Local/Temp/Rtmp6HHbnt/temp_libpatha64257544ad'
+#> Installing package into 'C:/Users/cinkova/AppData/Local/Temp/Rtmp6HHbnt/temp_libpatha645740703d'
 #> (as 'lib' is unspecified)
 ```
 
@@ -84,9 +84,9 @@ prepare it:
     case).
 
 There are many NLP tools, but you need one that works with [Universal
-Dependencies](https:://universaldependencies.org). For Czech we
-recommend [UDPipe](https://lindat.mff.cuni.cz/services/udpipe/info.php)
-with the language model `czech-pdt-udXXXX`.
+Dependencies](https://universaldependencies.org). For Czech we recommend
+[UDPipe](https://lindat.mff.cuni.cz/services/udpipe/info.php) with the
+language model `czech-pdt-udXXXX`.
 
 You can use UDPipe through:
 
